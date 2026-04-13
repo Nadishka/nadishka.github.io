@@ -1,108 +1,573 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOUR_NAME — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    :root {
+      --bg:        #ffffff;
+      --bg-subtle: #f7f6f3;
+      --text:      #111110;
+      --text-2:    #6b6b66;
+      --text-3:    #a8a8a1;
+      --border:    rgba(0,0,0,0.10);
+      --border-md: rgba(0,0,0,0.20);
+      --green:     #3B6D11;
+      --radius-lg: 12px;
+    }
 
-        <!--=====favicons=====-->
-        <link rel="icon" type="image/png" href="assets/img/NJ.png" />
-        
-        <title>Nadishka Jayashan | Portfolio</title>
-    
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <img src="assets/img/NJ.png" class="nav__logo">
-                </div>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #111110;
+        --bg-subtle: #1a1a18;
+        --text:      #f0ede8;
+        --text-2:    #8f8f88;
+        --text-3:    #5a5a55;
+        --border:    rgba(255,255,255,0.10);
+        --border-md: rgba(255,255,255,0.20);
+        --green:     #6aad2e;
+      }
+    }
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#home" class="nav__link">Work</a></li>
-                        <li class="nav__item"><a href="#home" class="nav__link">Resume</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
+    html { scroll-behavior: smooth; }
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hello!<br>I am <span class="home__title-color">Nadishka</span></h1>
-                    <h2 class="home__title1">+ Undergraduate <br>+ Software Engineering Intern </h2>
-                </div>
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
 
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/nadishka-jayashan/" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/Nadishka" class="home__social-icon"><i class='bx bxl-github' ></i></a>
-                    <a href="https://www.instagram.com/nadishka.j/" class="home__social-icon"><i class='bx bxl-instagram' ></i></a>
-                    <a href="https://twitter.com/NadiJayy" class="home__social-icon"><i class='bx bxl-twitter' ></i></a>
-                    <!--<a href="https://www.facebook.com/nadishka.jayashan" class="home__social-icon"><i class='bx bxl-facebook' ></i></a>-->
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-                </div>
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-                <div class="home__img">    
-                    <img src="assets/img/profilepic.png" alt="">
-                </div>
-            </section>
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--text-2);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
+    .nav-links a:hover { color: var(--text); }
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/aboutme.jpg" alt="">
-                    </div>
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid var(--border);
+      min-height: calc(100vh - 65px);
+    }
 
-                    <div>
-                        <h2 class="about__subtitle">I am Nadishka Jayashan</h2>
-                        <p class="about__text">I am an undergraduate student at Curtin University Australia who is keen in possessing a successful career, being a passionate seeker who is willing to face all kind of challenges. I believe myself highly competent to be more on coding and programming along with strong technical and interpersonal skills. I am eager to be challenged in order to grow and further improve my Software Engineering skills</p>           
-                    </div>                                   
-                </div>
-            </section>
+    .hero-left {
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 0.5px solid var(--border);
+    }
 
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 2rem;
+    }
 
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
 
-                <div class="contact__container bd-grid">
-                    <form class="contact__form">
-                        <input type="text" id="" placeholder="Name" class="contact__input" required>
-                        <input type="mail" id="" placeholder="Email" class="contact__input" required>
-                        <textarea name="Message" id="" cols="0" rows="10" maxlength="3000" class="contact__input" required></textarea>
-                        <button class="contact__button button" onclick="func()">Send</button>
-                        <!--<input type="button" value="Send" class="contact__button button" name="sendMailBtn" onclick="func()">-->
-                    </form>
-                </div>
-            </section>
-        </main>
+    .hero-name em {
+      font-style: italic;
+      color: var(--text-2);
+    }
 
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-        </footer>
+    .hero-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-2);
+      max-width: 360px;
+      margin-top: 2rem;
+    }
 
+    .hero-footer {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.04em;
+    }
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+    .hero-right {
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      background: var(--bg-subtle);
+    }
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
-</html>
+    /* ── Status dot ── */
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-2);
+      letter-spacing: 0.04em;
+      margin-bottom: 3rem;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    /* ── Stat row ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-block {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-val {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .stack-heading {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding-bottom: 0.6rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* ── Pill cloud ── */
+    .pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 0.5px solid var(--border-md);
+      color: var(--text-2);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    /* ── Stack list ── */
+    .stack-list { list-style: none; }
+
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-top: 0.5px solid var(--border);
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .stack-item:last-child { border-bottom: 0.5px solid var(--border); }
+
+    .stack-level {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Experience & Education ── */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline { list-style: none; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: 0.5px solid var(--border); }
+
+    .timeline-date {
+      font-size: 12px;
+      color: var(--text-3);
+      letter-spacing: 0.04em;
+      padding-top: 2px;
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-sub {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.65;
+    }
+
+    .two-col-sections {
+      display: block;
+    }
+
+    .col-section {
+      padding: 4rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* ── Contact section ── */
+    .section {
+      padding: 4rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-left {
+      padding-right: 3rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .contact-heading {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: var(--text-2);
+    }
+
+    .contact-email {
+      font-size: 13px;
+      color: var(--text-2);
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 1rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .contact-email:hover { color: var(--text); }
+
+    .contact-right {
+      padding-left: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .social-links { list-style: none; }
+
+    .social-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-top: 0.5px solid var(--border);
+      font-size: 13px;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-link:last-child { border-bottom: 0.5px solid var(--border); }
+    .social-link:hover { color: var(--text); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      nav { padding: 1.25rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { border-right: none; border-bottom: 0.5px solid var(--border); padding: 3rem 1.25rem; }
+      .hero-right { padding: 2.5rem 1.25rem; }
+      .section { padding: 3rem 1.25rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-left { padding-right: 0; border-right: none; border-bottom: 0.5px solid var(--border); padding-bottom: 2.5rem; }
+      .contact-right { padding-left: 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      footer { padding: 1.25rem; flex-direction: column; gap: 6px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a href="#" class="nav-logo">Nadishka Jayashan</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="about">
+    <div class="hero-left">
+      <div>
+        <!-- EDIT: role and location below -->
+        <p class="hero-tag">Software Engineer · New Zealand</p>
+
+        <!-- EDIT: headline — keep the <em> tag on the italic word -->
+        <h1 class="hero-name">
+          Building things<br>for the <em>web.</em>
+        </h1>
+
+        <!-- EDIT: short bio -->
+        <p class="hero-desc">
+          A software engineer focused on building clean, reliable solutions with C# and .NET. I care about writing maintainable code and solving real-world problems that make systems more efficient.
+        </p>
+      </div>
+
+      <p class="hero-footer">© 2026 Nadishka Jayashan</p>
+    </div>
+
+    <div class="hero-right">
+
+      <!-- EDIT: update stat values below -->
+      <div class="stats-row">
+        <div class="stat-block">
+          <span class="stat-val">4+</span>
+          <span class="stat-lbl">Years exp</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-val">3</span>
+          <span class="stat-lbl">Companies</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-val">10+</span>
+          <span class="stat-lbl">Projects</span>
+        </div>
+      </div>
+
+      <!-- EDIT: remove this block if you're not open to work -->
+      <div class="status-row">
+        <span class="status-dot"></span>
+        Open to new opportunities
+      </div>
+
+      <!-- EDIT: add or remove pill spans to update your stack -->
+      <div class="stack-heading">Stack</div>
+      <div class="pill-cloud">
+        <span class="pill">C#</span>
+        <span class="pill">Java</span>
+        <span class="pill">Python</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">SQL</span>
+        <span class="pill">React</span>
+        <span class="pill">ASP.NET</span>
+        <span class="pill">.NET Core</span>
+        <span class="pill">Entity Framework</span>
+        <span class="pill">REST API</span>
+        <span class="pill">Azure</span>
+        <span class="pill">CI/CD</span>
+        <span class="pill">SQL Server</span>
+        <span class="pill">Oracle</span>
+        <span class="pill">GitHub</span>
+        <span class="pill">Agile</span>
+        <span class="pill">Sitecore</span>
+        <span class="pill">OOP</span>
+        <span class="pill">MVC</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience & Education ── -->
+  <div class="two-col-sections" id="experience">
+
+    <!-- Work Experience -->
+    <div class="col-section">
+      <p class="section-label">Experience</p>
+      <!-- EDIT: duplicate <li> blocks to add more roles -->
+      <ul class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-date">Sep 2023 — Jul 2024</span>
+          <div>
+            <p class="timeline-title">Senior Developer</p>
+            <p class="timeline-sub">NEXT Technology Lanka (Pvt) Ltd</p>
+            <p class="timeline-desc">Contributed to a Finance Modernization Project building and securing REST API endpoints, resolving live and UAT bugs, and implementing payment module authorization. Improved overall code quality through unit testing and peer code reviews.</p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-date">Feb 2023 - Aug 2023</span>
+          <div>
+            <p class="timeline-title">Software Engineer</p>
+            <p class="timeline-sub">Codehouse Group</p>
+            <p class="timeline-desc">Developed enterprise web solutions using .NET and Sitecore CMS, researching and implementing new technologies while supporting leadership in managing project deliveries and meeting key milestones.</p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-date">Aug 2020 - Feb 2023</span>
+          <div>
+            <p class="timeline-title">Software Engineer</p>
+            <p class="timeline-sub">Flintec Transducers (Pvt) Ltd</p>
+            <p class="timeline-desc">Designed and implemented inventory and load cell calibration systems using C# WinForms and SQL Server, reducing workflow times by 20%. Delivered real-time reporting and provided first-line IT support including hardware troubleshooting and staff training on new systems.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Education -->
+    <div class="col-section">
+      <p class="section-label">Education</p>
+      <!-- EDIT: duplicate <li> blocks to add more degrees -->
+      <ul class="timeline">
+        <li class="timeline-item">
+          <span class="timeline-date">2020</span>
+          <div>
+            <p class="timeline-title">Bachelor of Science(Computing), Major in Software Engineering </p>
+            <p class="timeline-sub">Curtin University</p>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-date">2016</span>
+          <div>
+            <p class="timeline-title">GCE Advnaced Level Examination</p>
+            <p class="timeline-sub">Richmond College</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ── Contact ── -->
+  <section class="section" id="contact">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2 class="contact-heading">Let's build something <em>together.</em></h2>
+        <!-- EDIT: replace with your email -->
+        <a href="/cdn-cgi/l/email-protection#3f66706a6d607a727e7673" class="contact-email">nadishka.jayashan@gmail.com</a>
+      </div>
+      <div class="contact-right">
+        <!-- EDIT: replace href values with your real URLs.
+             Remove any <li> rows you don't need. -->
+        <ul class="social-links">
+          <li><a href="https://github.com/Nadishka" target="_blank" rel="noopener" class="social-link"><span>GitHub</span><span>↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/nadishkaj/" target="_blank" rel="noopener" class="social-link"><span>LinkedIn</span><span>↗</span></a></li>
+          <li><a href="https://www.instagram.com/nadishka.j/" target="_blank" rel="noopener" class="social-link"><span>Instagram</span><span>↗</span></a></li>
+          <li><a href="TWITTER_URL" target="_blank" rel="noopener" class="social-link"><span>Twitter / X</span><span>↗</span></a></li>
+          <li><a href="https://drive.google.com/file/d/1ekBUCUKIKHLnz4RVLAxHlMW4KN86tXRk/view?usp=sharing" target="_blank" rel="noopener" class="social-link"><span>Read.cv</span><span>↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <span class="footer-copy">Designed & built by Nadishka Jayashan · 2026</span>
+    <span class="footer-copy">New Zealand</sp
