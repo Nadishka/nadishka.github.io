@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YOUR_NAME — Portfolio</title>
+  <title>Nadishka Jayashan — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -141,7 +145,7 @@
       padding: 4rem 2.5rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: flex-end;
       gap: 1.5rem;
       background: var(--bg-subtle);
     }
@@ -419,26 +423,22 @@
   <section class="hero" id="about">
     <div class="hero-left">
       <div>
-        <!-- EDIT: role and location below -->
         <p class="hero-tag">Software Engineer · New Zealand</p>
 
-        <!-- EDIT: headline — keep the <em> tag on the italic word -->
         <h1 class="hero-name">
           Building things<br>for the <em>web.</em>
         </h1>
 
-        <!-- EDIT: short bio -->
         <p class="hero-desc">
           A software engineer focused on building clean, reliable solutions with C# and .NET. I care about writing maintainable code and solving real-world problems that make systems more efficient.
         </p>
       </div>
 
-      <p class="hero-footer">© 2026 Nadishka Jayashan</p>
+      <p class="hero-footer">© <span id="year"></span> Nadishka Jayashan</p>
     </div>
 
     <div class="hero-right">
 
-      <!-- EDIT: update stat values below -->
       <div class="stats-row">
         <div class="stat-block">
           <span class="stat-val">4+</span>
@@ -454,13 +454,11 @@
         </div>
       </div>
 
-      <!-- EDIT: remove this block if you're not open to work -->
       <div class="status-row">
         <span class="status-dot"></span>
         Open to new opportunities
       </div>
 
-      <!-- EDIT: add or remove pill spans to update your stack -->
       <div class="stack-heading">Stack</div>
       <div class="pill-cloud">
         <span class="pill">C#</span>
@@ -492,14 +490,13 @@
     <!-- Work Experience -->
     <div class="col-section">
       <p class="section-label">Experience</p>
-      <!-- EDIT: duplicate <li> blocks to add more roles -->
       <ul class="timeline">
         <li class="timeline-item">
           <span class="timeline-date">Sep 2023 — Jul 2024</span>
           <div>
             <p class="timeline-title">Senior Developer</p>
             <p class="timeline-sub">NEXT Technology Lanka (Pvt) Ltd</p>
-            <p class="timeline-desc">Contributed to a Finance Modernization Project building and securing REST API endpoints, resolving live and UAT bugs, and implementing payment module authorization. Improved overall code quality through unit testing and peer code reviews.</p>
+            <p class="timeline-desc">Played a key role in modernizing a financial platform — building and securing API endpoints, tackling live production bugs, and raising the bar on code quality through unit testing and reviews.</p>
           </div>
         </li>
         <li class="timeline-item">
@@ -507,7 +504,7 @@
           <div>
             <p class="timeline-title">Software Engineer</p>
             <p class="timeline-sub">Codehouse Group</p>
-            <p class="timeline-desc">Developed enterprise web solutions using .NET and Sitecore CMS, researching and implementing new technologies while supporting leadership in managing project deliveries and meeting key milestones.</p>
+            <p class="timeline-desc">Built scalable enterprise web applications on .NET and Sitecore CMS, explored and adopted new technologies, and helped keep projects on track by supporting delivery planning and milestone management.</p>
           </div>
         </li>
         <li class="timeline-item">
@@ -515,7 +512,7 @@
           <div>
             <p class="timeline-title">Software Engineer</p>
             <p class="timeline-sub">Flintec Transducers (Pvt) Ltd</p>
-            <p class="timeline-desc">Designed and implemented inventory and load cell calibration systems using C# WinForms and SQL Server, reducing workflow times by 20%. Delivered real-time reporting and provided first-line IT support including hardware troubleshooting and staff training on new systems.</p>
+            <p class="timeline-desc">Engineered inventory and load cell calibration systems that cut workflow times by 20%. Built real-time reporting tools using WinForms and SQL Server, and handled day-to-day IT support including staff training and hardware troubleshooting.</p>
           </div>
         </li>
       </ul>
@@ -524,7 +521,6 @@
     <!-- Education -->
     <div class="col-section">
       <p class="section-label">Education</p>
-      <!-- EDIT: duplicate <li> blocks to add more degrees -->
       <ul class="timeline">
         <li class="timeline-item">
           <span class="timeline-date">2020</span>
@@ -550,12 +546,9 @@
     <div class="contact-grid">
       <div class="contact-left">
         <h2 class="contact-heading">Let's build something <em>together.</em></h2>
-        <!-- EDIT: replace with your email -->
         <a href="/cdn-cgi/l/email-protection#3f66706a6d607a727e7673" class="contact-email">nadishka.jayashan@gmail.com</a>
       </div>
       <div class="contact-right">
-        <!-- EDIT: replace href values with your real URLs.
-             Remove any <li> rows you don't need. -->
         <ul class="social-links">
           <li><a href="https://github.com/Nadishka" target="_blank" rel="noopener" class="social-link"><span>GitHub</span><span>↗</span></a></li>
           <li><a href="https://www.linkedin.com/in/nadishkaj/" target="_blank" rel="noopener" class="social-link"><span>LinkedIn</span><span>↗</span></a></li>
@@ -569,5 +562,11 @@
 
   <!-- ── Footer ── -->
   <footer>
-    <span class="footer-copy">Designed & built by Nadishka Jayashan · 2026</span>
-    <span class="footer-copy">New Zealand</sp
+    <span class="footer-copy">Designed & built by Nadishka Jayashan · <span id="year"></span></span>
+    <span class="footer-copy">New Zealand</span>
+  </footer>
+
+  <script>
+    const y = new Date().getFullYear();
+    document.getElementById('year').textContent = y;
+  </script>
